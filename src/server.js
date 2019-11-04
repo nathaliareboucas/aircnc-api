@@ -1,15 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
+
 mongoose.connect('mongodb+srv://dbaaircnc:dbaaircnc@dbaircnc-lauk1.mongodb.net/aircnc?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-app.use(express.json());
 
+app.use(cors());
+app.use(express.json());
 app.use(routes);
 
 app.listen(3333);
